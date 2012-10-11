@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="lejos.nxt.TouchSensor"/>
+<fullyQualifiedTypeName name="lejos.nxt.SensorPort"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="lejos.nxt.MotorPort"/>
+<fullyQualifiedTypeName name="PIDLightValCtrl"/>
+</qualifiedTypeNameHistroy>

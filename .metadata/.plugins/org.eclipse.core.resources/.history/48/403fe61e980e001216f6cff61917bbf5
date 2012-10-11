@@ -1,0 +1,8 @@
+
+public class LightVal {
+	private int targLightVal;
+
+	public LightVal(){
+
+	}
+}
