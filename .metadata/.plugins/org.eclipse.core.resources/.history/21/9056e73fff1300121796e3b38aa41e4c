@@ -10,7 +10,7 @@ public class Gyro
 	// private static final float GYRO_OFFSET = 610F;
 	private static final float GYRO_OFFSET = 589F;
 
-	private GyroSensor gyro = new GyroSensor(SensorPort.S1);
+	private GyroSensor gyro = new GyroSensor(SensorPort.S4);
 	private float offset;
 
 	public Gyro() {

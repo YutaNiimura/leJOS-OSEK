@@ -15,7 +15,7 @@ import lejos.nxt.*;
 public class Sample1Main extends Thread {
 	public static void main(String[] args) {
 
-		TouchSensor touch = new TouchSensor(SensorPort.S4);
+		TouchSensor touch = new TouchSensor(SensorPort.S1);
 		while (touch.isPressed() == false)
 			; /* タッチセンサ押下待機 */
 
