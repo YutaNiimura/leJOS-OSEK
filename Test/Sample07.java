@@ -2,12 +2,11 @@ import lejos.nxt.*;
 public class Sample07 {
 
 	public static void main(String[] args) {
-		Motor motorB = new Motor(MotorPort.B);
-		Motor motorC = new Motor(MotorPort.C);
+
 		LightSensor lightS3 = new LightSensor(SensorPort.S3);
 
-		motorB.forward();
-		motorC.forward();
+		Motor.B.forward();
+		Motor.C.forward();
 
 		while(true){
 			if(lightS3.readValue() >= 35){
@@ -18,7 +17,7 @@ public class Sample07 {
 		}
 
 		LCD.drawString("Stop", 0, 0);
-		motorB.stop();
-		motorC.stop();
+		Motor.B.stop();
+		Motor.C.stop();
 	}
 }

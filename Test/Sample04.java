@@ -3,19 +3,17 @@ import lejos.nxt.*;
 public class Sample04 {
 
 	public static void main(String[] args) {
-		Motor motorB = new Motor(MotorPort.B);
-		Motor motorC = new Motor(MotorPort.C);
 
 		while(true){
-			motorB.stop();
-			motorC.forward();
+			Motor.B.stop();
+			Motor.C.forward();
 			try{
 				Thread.sleep(2000);
 			}catch (InterruptedException e){
 			}
 
-			motorB.forward();
-			motorC.stop();
+			Motor.B.forward();
+			Motor.C.stop();
 			try{
 				Thread.sleep(2000);
 			}catch(InterruptedException e){

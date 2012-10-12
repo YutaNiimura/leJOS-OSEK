@@ -3,8 +3,6 @@ import lejos.nxt.*;
 
 public class Sample02 {
 	public static void main(String[] args) {
-		Motor motorB = new Motor(MotorPort.B);
-		Motor motorC = new Motor(MotorPort.C);
 
 		final int c_move_mode = 1;
 		int move_mode;
@@ -12,11 +10,11 @@ public class Sample02 {
 		move_mode = 1;
 
 		if(c_move_mode == move_mode){
-			motorB.forward();
-			motorC.forward();
+			Motor.B.forward();
+			Motor.C.forward();
 		}else{
-			motorB.backward();
-			motorC.backward();
+			Motor.B.backward();
+			Motor.C.backward();
 		}
 
 		try{
@@ -24,8 +22,8 @@ public class Sample02 {
 		}catch(InterruptedException e){
 		}
 
-		motorB.stop();
-		motorC.stop();
+		Motor.B.stop();
+		Motor.C.stop();
 	}
 
 }

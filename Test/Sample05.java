@@ -2,12 +2,11 @@ import lejos.nxt.*;
 public class Sample05 {
 
 	public static void main(String[] args) {
-		Motor motorB = new Motor(MotorPort.B);
-		Motor motorC = new Motor(MotorPort.C);
+
 		TouchSensor touchS1 = new TouchSensor(SensorPort.S4);
 
-		motorB.forward();
-		motorC.forward();
+		Motor.B.forward();
+		Motor.C.forward();
 
 		while(true){
 			if(!touchS1.isPressed()){
@@ -18,15 +17,15 @@ public class Sample05 {
 		}
 
 		LCD.drawString("Back", 0, 0);
-		motorB.backward();
-		motorC.backward();
+		Motor.B.backward();
+		Motor.C.backward();
 		try{
 			Thread.sleep(3000);
 		}catch (InterruptedException e){
 		}
 		LCD.drawString("Stop", 0, 0);
-		motorB.stop();
-		motorC.stop();
+		Motor.B.stop();
+		Motor.C.stop();
 		try{
 			Thread.sleep(3000);
 		}catch (InterruptedException e){

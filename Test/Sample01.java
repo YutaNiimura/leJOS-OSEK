@@ -5,16 +5,14 @@ public class Sample01 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Motor motorA = new Motor(MotorPort.A);
-		Motor motorC = new Motor(MotorPort.C);
-		motorA.forward();
-		motorC.forward();
+		Motor.B.forward();
+		Motor.C.forward();
 
 		try{
 			Thread.sleep(2000);
 		}catch(InterruptedException e){
 		}
-		motorA.stop();
-		motorC.stop();
+		Motor.B.stop();
+		Motor.C.stop();
 	}
 }
