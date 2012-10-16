@@ -8,6 +8,7 @@ public class Driver implements Runnable
 	private LineTracer tracer = new LineTracer();
 	private Gyro gyro = new Gyro();
 	private Motor motor = new Motor();
+
 	private boolean available;
 
 	public Driver() {
@@ -22,7 +23,31 @@ public class Driver implements Runnable
 
 		/* モータ制御初期化 */
 		motor.reset();
+/*
+		while(true){
+			if(touch.isPressed()){
+				Gyro.setOffset(gyro.readValue());
+				//遅延
+				break;
+			}
+		}
 
+		while(true){
+			if(touch.isPressed()){
+				LineTracer.setBlackVal(0);
+				//遅延
+				break;
+			}
+		}
+
+		while(true){
+			if(touch.isPressed()){
+				LineTracer.setWhiteVal(0);
+				//遅延
+				break;
+			}
+		}
+*/
 		/* ライントレース開始 */
 		Thread tracerThread = new Thread(tracer);
 		tracerThread.start();

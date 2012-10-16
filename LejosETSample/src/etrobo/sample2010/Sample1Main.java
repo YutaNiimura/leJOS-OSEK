@@ -28,7 +28,7 @@ public class Sample1Main extends Thread {
 
 		/* LEFTボタン(左)によりロボット停止 */
 		while (true) {
-			if (Button.LEFT.isPressed() == true)
+			if (Button.LEFT.isDown() == true)
 				break;
 			try {
 				Thread.sleep(200); /* 約200msec周期処理 */
@@ -39,7 +39,7 @@ public class Sample1Main extends Thread {
 
 		/* ESCAPEボタン(下)によりプログラム終了 */
 		while (true) {
-			if (Button.ESCAPE.isPressed() == true)
+			if (Button.ESCAPE.isDown() == true)
 				break;
 		}
 	}
