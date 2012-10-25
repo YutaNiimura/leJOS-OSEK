@@ -1,0 +1,120 @@
+[タスクの記述方式]
+・nxtOSEKの場合
+
+○プログラムでの表記
+//走行体管理タスク(4ms)
+TASK(ActionTask)
+{
+	RN_modesetting();	//走行体状態設定
+	TailControl();
+	TerminateTask();
+}
+
+//走行状態管理タスク(5ms)
+TASK(ActionTask2)
+{
+	RN_setting();		//走行状態設定
+	TerminateTask();
+}
+
+○prog.oil
+
+TASK ActionTask
+{
+	AUTOSTART = FALSE;
+ 	SCHEDULE = FULL;
+ 	PRIORITY = 4;
+	ACTIVATION = 1;
+	STACKSIZE = 512;
+	RESOURCE = lcd;
+};
+
+TASK ActionTask2
+{
+	AUTOSTART = FALSE;
+	SCHEDULE = FULL;
+	PRIORITY = 3;
+	ACTIVATION = 1;
+	STACKSIZE = 512;
+	RESOURCE = lcd;
+};
+
+ALARM cyclic_alarm1
+{
+	COUNTER = SysTimerCnt;
+	ACTION = ACTIVATETASK
+	{
+		TASK = ActionTask;
+	};
+	AUTOSTART = TRUE
+	{
+		ALARMTIME = 1;
+		CYCLETIME = 4;
+		APPMODE = appmode1;
+	};
+};
+ALARM cyclic_alarm2
+{
+	COUNTER = SysTimerCnt;
+	ACTION = ACTIVATETASK
+	{
+		TASK = ActionTask2;
+	};
+	AUTOSTART = TRUE
+	{
+		ALARMTIME = 1;
+		CYCLETIME = 5;
+  		APPMODE = appmode1;
+ 	};
+};
+
+・leJOS-NXJ
+(LineTracerクラス(implements Runnable)内で)
+ /* ライントレース */
+public void run() {
+	light.readNormalizedValue(); /* 光センサ赤色LEDをON */
+	//int distance;	/* cm単位 */
+	//int counter = 0;
+	while (available == true) {
+		/* 超音波センサによる距離測定周期は、超音波の減衰特性に依存します。 */
+		/*
+		if(++counter == 10) { // 約40msec周期処理
+			distance = sonar.getDistance();
+			// 障害物が30cm以内にあったらライントレース中止
+			if(distance < 30) {
+				forward = 0;
+				pause = true;
+			}
+			else {
+				forward = 50;
+				pause = false;
+			}
+			counter=0;
+		}
+		 */
+		forward = 30;
+		if(pause == true) {
+			turn = 0;
+		}
+		else {
+			/* ライントレース */
+			if ((1023 - light.readNormalizedValue()) <= (WHITE + BLACK) / 2) {
+				turn = 50F; /* 右折 */
+			}
+			else {
+				turn = -50F; /* 左折 */
+			}
+		}
+		try {
+			Thread.sleep(4); /* 約4msec周期処理 */
+		} catch (InterruptedException e) {
+			}
+	}
+}
+
+(Driverクラス内で）
+	Thread tracerThread = new Thread(tracer);
+	tracerThread.start();
+
+
+

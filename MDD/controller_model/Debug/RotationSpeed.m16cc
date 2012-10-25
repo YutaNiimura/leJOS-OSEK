@@ -1,0 +1,5 @@
+-lang=c
+-c
+-finfo
+-dir "D:\yoshiaki\devel\MDD\controller_model\Debug"
+"D:\yoshiaki\devel\MDD\controller_model\RotationSpeed.c"

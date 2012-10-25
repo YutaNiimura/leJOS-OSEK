@@ -1,0 +1,8 @@
+-L "nc30lib"
+-G
+-MS
+-O "D:\yoshiaki\DONEKYDevelopments\HDL\MDD\led_driver_api\Debug\led_driver_api.x30"
+"D:\yoshiaki\DONEKYDevelopments\HDL\MDD\led_driver_api\Debug\ncrt0.r30"
+"D:\yoshiaki\DONEKYDevelopments\HDL\MDD\led_driver_api\Debug\led_driver.r30"
+"D:\yoshiaki\DONEKYDevelopments\HDL\MDD\led_driver_api\Debug\led_driver_test.r30"
+"D:\yoshiaki\DONEKYDevelopments\HDL\MDD\led_driver_api\Debug\utility.r30"
