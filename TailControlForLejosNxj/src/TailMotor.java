@@ -7,6 +7,6 @@ public class TailMotor {
 	}
 
 	public void setTailSpeed(int parm){
-		MotorPort.C.controlMotor(1, parm);
+		MotorPort.C.controlMotor(parm, 1);
 	}
 }

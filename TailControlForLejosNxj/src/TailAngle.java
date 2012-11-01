@@ -1,4 +1,3 @@
-import lejos.nxt.*;
 public class TailAngle {
 
 	private TailAngleEncoder tailmotorencoder = new TailAngleEncoder();
@@ -10,7 +9,7 @@ public class TailAngle {
 	}
 
 	public int getTailAngle(){
-		return tailmotorencoder.getTargAngle();
+		return tailmotorencoder.getTailAngle();
 	}
 
 	public int getTargTailAngle(){

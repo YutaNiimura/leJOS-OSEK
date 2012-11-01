@@ -5,7 +5,7 @@ public class TailAngleEncoder {
 
 	}
 
-	public int getTargAngle(){
+	public int getTailAngle(){
 		return MotorPort.C.getTachoCount();
 	}
 }
