@@ -1,15 +1,16 @@
-import lejos.nxt.*;
+package Algorithm;
+import Common.TailControlParm;
 
-public class PIDTailAngleControlParm {
+public class PIDTailControlParm extends TailControlParm{
 
 	private float tKp;
 	private float tKi;
 	private float tKd;
 
-	PIDTailAngleControlParm(){
+	public PIDTailControlParm(){
 		this.tKp = (float)1.0;
-		this.tKi = (float)0.3;
-		this.tKd = (float)0.03;
+		this.tKi = (float)0.0;
+		this.tKd = (float)0.0;
 	}
 
 	public float getTKp(){

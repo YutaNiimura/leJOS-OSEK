@@ -1,11 +1,20 @@
+import Algorithm.*;
+import Common.*;
+import Lejosnxj.*;
 import lejos.nxt.Button;
-
 
 public class TailControlMain extends Thread{
 
 	public static void main(String[] args) {
 
-		TailControl tailControl = new TailControl();
+		LejosTailAngleMeter tailAngleMeter = new Lejosnxj.LejosTailAngleMeter();
+		LejosTailMotor tailMotor = new Lejosnxj.LejosTailMotor();
+		PIDTailControlParm PIDtailControlParm = new Algorithm.PIDTailControlParm();
+		PIDTailControl PIDtailControl = new Algorithm.PIDTailControl();
+//		DummyTailControlParm dummy = new Algorithm.DummyTailControlParm();
+		PIDtailControl.setTailControlParm(PIDtailControlParm);
+
+		TailControl tailControl = new TailControl(tailAngleMeter,tailMotor,PIDtailControl,4);
 
 		tailControl.setTargAngle(90);
 

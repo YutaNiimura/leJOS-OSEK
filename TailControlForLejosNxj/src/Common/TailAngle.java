@@ -1,15 +1,18 @@
+package Common;
+
 public class TailAngle {
 
-	private TailAngleEncoder tailmotorencoder = new TailAngleEncoder();
+	private TailAngleMeter tailAngleMeter;
 
 	private int targTailAngle;
 
-	TailAngle(){
+	TailAngle(TailAngleMeter tailAngleMeter){
+		this.tailAngleMeter = tailAngleMeter;
 		this.targTailAngle = 0;
 	}
 
 	public int getTailAngle(){
-		return tailmotorencoder.getTailAngle();
+		return tailAngleMeter.getTailAngle();
 	}
 
 	public int getTargTailAngle(){

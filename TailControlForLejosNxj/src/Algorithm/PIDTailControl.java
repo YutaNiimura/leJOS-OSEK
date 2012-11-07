@@ -1,3 +1,5 @@
+package Algorithm;
+import Common.TailControlMethod;
 
 public class PIDTailControl extends TailControlMethod{
 
@@ -7,7 +9,9 @@ public class PIDTailControl extends TailControlMethod{
 	private float bfDeviation;
 	private float lastMeasurementTime;
 
-	PIDTailControl(){
+	PIDTailControlParm pidTailControlParm;
+
+	public PIDTailControl(){
 		this.deviation = 0;
 		this.integratedDeviation = 0;
 		this.differentialDeviatiion = 0;
@@ -16,7 +20,6 @@ public class PIDTailControl extends TailControlMethod{
 	}
 
 	public int calcTailAngleCtrlVal(int targTailAngle,int tailAngle,int time){
-
 
 		int cmd_turn;
 
@@ -29,10 +32,8 @@ public class PIDTailControl extends TailControlMethod{
 
 		this.differentialDeviatiion = (float) ((this.deviation - this.bfDeviation)/(time - this.lastMeasurementTime * 0.001));
 
-//		cmd_turn = (int)(this.deviation * getPIDTailAngleCtrlParm().Kp/* * (time - this.lastMeasurementTime)/0.001*/);
-
-		cmd_turn = (int)(this.deviation * getTailControlParm().Kp + this.integratedDeviation * getTailControlParm().Ki
-				+ this.differentialDeviatiion * getTailControlParm().Kd);
+		cmd_turn = (int)(this.deviation * ((PIDTailControlParm) tailControlParm).getTKp() + this.integratedDeviation * ((PIDTailControlParm) tailControlParm).getTKi()
+				+ this.differentialDeviatiion * ((PIDTailControlParm)tailControlParm).getTKd());
 
 		if(cmd_turn > 100)
 			cmd_turn = 100;
