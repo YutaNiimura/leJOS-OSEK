@@ -1,7 +1,7 @@
 package Algorithm;
 
-import Common.TailControlParm;
+import Common.TailControlMethodParm;
 
-public class DummyTailControlParm extends TailControlParm{
+public class DummyTailControlParm extends TailControlMethodParm{
 
 }

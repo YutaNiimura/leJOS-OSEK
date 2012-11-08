@@ -2,13 +2,13 @@ package Common;
 
 public abstract class TailControlMethod {
 
-	protected TailControlParm tailControlParm;
+	protected TailControlMethodParm tailControlParm;
 
-	public void setTailControlParm(TailControlParm parm){
+	public void setTailControlParm(TailControlMethodParm parm){
 		this.tailControlParm = parm;
 	}
 
-	public TailControlParm getTailControlParm(){
+	public TailControlMethodParm getTailControlParm(){
 		return this.tailControlParm;
 	}
 

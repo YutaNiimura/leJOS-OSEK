@@ -22,9 +22,9 @@ public class TailControl implements Runnable{
 		this.tailangle = new TailAngle(tailAngleMeter);
 		this.controlCycle = ControlCycle;
 
-		MotorPort.C.setPWMMode(BasicMotorPort.PWM_BRAKE);
-		MotorPort.C.resetTachoCount();
-		MotorPort.C.controlMotor(0, 0);
+		MotorPort.A.setPWMMode(BasicMotorPort.PWM_BRAKE);
+		MotorPort.A.resetTachoCount();
+		MotorPort.A.controlMotor(0, 0);
 	}
 
 	public void run() {
@@ -41,11 +41,11 @@ public class TailControl implements Runnable{
 		tailangle.setTargTailAngle(angle);
 	}
 
-	public void setControlParm(TailControlParm parm){
+	public void setControlParm(TailControlMethodParm parm){
 		tailControlMethod.setTailControlParm(parm);
 	}
 
-	public TailControlParm getControlParm(){
+	public TailControlMethodParm getControlParm(){
 		return tailControlMethod.getTailControlParm();
 	}
 
@@ -60,7 +60,7 @@ public class TailControl implements Runnable{
 
 	public void stopControl(){
 		changeMode(false);
-		MotorPort.C.controlMotor(0, 0);
+		MotorPort.A.controlMotor(0, 0);
 	}
 
 	private void changeMode(boolean mode){

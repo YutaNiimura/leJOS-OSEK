@@ -1,7 +1,7 @@
 package Algorithm;
-import Common.TailControlParm;
+import Common.TailControlMethodParm;
 
-public class PIDTailControlParm extends TailControlParm{
+public class PIDTailControlParm extends TailControlMethodParm{
 
 	private float tKp;
 	private float tKi;
