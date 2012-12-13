@@ -1,15 +1,4 @@
-INDEX VERSION 1.126+C:\Users\N_MURA\leJOS\.metadata\.plugins\org.eclipse.jdt.core
-1048350443.index
-3349329586.index
+INDEX VERSION 1.126+C:\Users\N_MURA\git\leJOS-OSEK\.metadata\.plugins\org.eclipse.jdt.core
 3786976533.index
-3170897938.index
-536660260.index
-1276645198.index
-429915660.index
-2525276465.index
+3349329586.index
 1657330681.index
-749664115.index
-4058324312.index
-368856641.index
-1690857455.index
-3515510369.index

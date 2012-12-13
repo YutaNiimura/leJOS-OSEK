@@ -5,6 +5,8 @@ import lejos.nxt.Button;
 
 public class Main extends Thread{
 
+	private final static int ControlCycle = 4;
+
 	public static void main(String[] args) {
 
 		LejosMotorEncoder motorEncoder = new Interface.LejosMotorEncoder();
@@ -14,9 +16,9 @@ public class Main extends Thread{
 
 		PIDCurvatureControl.setCurvatureCtrlParm(PIDCurvatureControlParm);
 
-		CurvatureControl curvatureControl = new CurvatureControl(motorEncoder,wheelMotor,PIDCurvatureControl,4);
+		CurvatureControl curvatureControl = new CurvatureControl(motorEncoder,wheelMotor,PIDCurvatureControl,ControlCycle);
 
-		curvatureControl.setTargCurvature(0);
+		curvatureControl.setTargCurvature(30);
 
 		Thread thread = new Thread(curvatureControl);
 

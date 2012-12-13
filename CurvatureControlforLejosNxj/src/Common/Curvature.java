@@ -4,20 +4,19 @@ import Interface.MotorEncoder;
 
 public class Curvature {
 
+	private final static double wheelRadius = 4.1;
+	private final static double wheelDist = 16.2;
+
 	MotorEncoder curvatureEncoder;
 
 	public float targCurvature;
-	public int bfDist;
+	public double bfDist;
 	public double bfTheta;
-	public double wheelRadius;
-	public double wheelDist;
 
-	Curvature(){
+	public Curvature(){
 		this.targCurvature = 0;
 		this.bfDist = 0;
 		this.bfTheta = 0;
-		this.wheelRadius = 4.1;
-		this.wheelDist = 16.2;
 	}
 
 	public Curvature(MotorEncoder curvatureEncoder){
@@ -28,12 +27,12 @@ public class Curvature {
 		int LCount = curvatureEncoder.getLCount();
 		int RCount = curvatureEncoder.getRCount();
 
-		double LDist = LCount * this.wheelRadius;
-		double RDist = RCount * this.wheelRadius;
+		double LDist = (double)LCount * wheelRadius;
+		double RDist = (double)RCount * wheelRadius;
 
 		double dist = (LDist + RDist)/2;
 
-		double theta = (this.wheelRadius / this.wheelDist) * (LDist - RDist);
+		double theta = (wheelRadius / wheelDist) * (LDist - RDist);
 
 		double curvature;
 
@@ -41,6 +40,9 @@ public class Curvature {
 			curvature = (dist - this.bfDist) / (theta - this.bfTheta);
 		else
 			curvature = 0;
+
+		this.bfTheta = theta;
+		this.bfDist = dist;
 
 		return (float)curvature;
 	}

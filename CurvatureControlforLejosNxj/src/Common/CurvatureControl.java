@@ -1,21 +1,21 @@
 package Common;
 
+import lejos.nxt.BasicMotorPort;
+import lejos.nxt.MotorPort;
 import lejos.util.Stopwatch;
 import Interface.MotorEncoder;
 import Interface.WheelMotor;
 
-
 public class CurvatureControl implements Runnable{
 
-	private Stopwatch stopwatch= new Stopwatch();
+	private Stopwatch stopwatch = new Stopwatch();
 
 	private Curvature curvature;
-
 	private WheelMotor wheelMotor;
 	private CurvatureControlMethod curvatureControlMethod;
 	private int controlCycle;
 
-	private Boolean available = false;
+	private boolean available;
 
 	public CurvatureControl(MotorEncoder curvatureEncoder,WheelMotor wheelMotor,
 			CurvatureControlMethod curvatureControlMethod,int controlCycle){
@@ -23,6 +23,15 @@ public class CurvatureControl implements Runnable{
 		this.curvatureControlMethod = curvatureControlMethod;
 		this.controlCycle = controlCycle;
 		this.curvature = new Curvature(curvatureEncoder);
+		this.available = false;
+
+		MotorPort.B.setPWMMode(BasicMotorPort.PWM_BRAKE);
+		MotorPort.B.resetTachoCount();
+		MotorPort.B.controlMotor(0, 0);
+
+		MotorPort.C.setPWMMode(BasicMotorPort.PWM_BRAKE);
+		MotorPort.C.resetTachoCount();
+		MotorPort.C.controlMotor(0, 0);
 	}
 
 	public void setTargCurvature(float parm){
@@ -47,6 +56,13 @@ public class CurvatureControl implements Runnable{
 
 	public void stopControl(){
 		changeMode(false);
+		MotorPort.B.setPWMMode(BasicMotorPort.PWM_BRAKE);
+		MotorPort.B.resetTachoCount();
+		MotorPort.B.controlMotor(0, 0);
+
+		MotorPort.C.setPWMMode(BasicMotorPort.PWM_BRAKE);
+		MotorPort.C.resetTachoCount();
+		MotorPort.C.controlMotor(0, 0);
 	}
 
 	public void run() {
@@ -60,7 +76,7 @@ public class CurvatureControl implements Runnable{
 	}
 
 	private void doCurvatureControl(){
-		wheelMotor.setVal((int)this.curvatureControlMethod.calcCurvatureCtrlVal
+		wheelMotor.setVal(this.curvatureControlMethod.calcCurvatureCtrlVal
 				(this.curvature.getTargCurvature(), this.curvature.getCurvature(), stopwatch.elapsed()));
 	}
 

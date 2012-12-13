@@ -10,8 +10,6 @@ public class PIDCurvatureCtrl extends CurvatureControlMethod{
 	private float bfDeviation;
 	private float lastMeasurementTime;
 
-	PIDCurvatureMethodParm pidCurvatureControlParm;
-
 	public PIDCurvatureCtrl(){
 		this.deviation = 0;
 		this.integratedDeviation = 0;
@@ -20,7 +18,8 @@ public class PIDCurvatureCtrl extends CurvatureControlMethod{
 		this.lastMeasurementTime = 0;
 	}
 
-	public float calcCurvatureCtrlVal(float targCurvature, float curvature,	int time) {
+	public int calcCurvatureCtrlVal(float targCurvature, float curvature,int time) {
+
 		int cmd_turn;
 
 		if(targCurvature > 0)
@@ -32,8 +31,8 @@ public class PIDCurvatureCtrl extends CurvatureControlMethod{
 
 		this.differentialDeviatiion = (float) ((this.deviation - this.bfDeviation)/(time - this.lastMeasurementTime * 0.001));
 
-		cmd_turn = (int)(this.deviation * ((PIDCurvatureMethodParm) pidCurvatureControlParm).getCKp() + this.integratedDeviation * ((PIDCurvatureMethodParm) pidCurvatureControlParm).getCKi()
-				+ this.differentialDeviatiion * ((PIDCurvatureMethodParm)pidCurvatureControlParm).getCKd());
+		cmd_turn = (int)(this.deviation * ((PIDCurvatureMethodParm)curvatureControlMethodParm).getCKp() + this.integratedDeviation * ((PIDCurvatureMethodParm)curvatureControlMethodParm).getCKi()
+				+ this.differentialDeviatiion * ((PIDCurvatureMethodParm)curvatureControlMethodParm).getCKd());
 
 		if(cmd_turn > 100)
 			cmd_turn = 100;

@@ -4,31 +4,37 @@ import Common.SpeedControlMethodParm;
 
 public class PIDSpeedControlParm extends SpeedControlMethodParm {
 
-	private float sKp;
-	private float sKi;
-	private float skd;
+	private double sKp;
+	private double sKi;
+	private double skd;
 
-	public float getSKp() {
+	public PIDSpeedControlParm(){
+		this.sKp = 10.25;
+		this.sKi = 0;
+		this.skd = 0;
+	}
+
+	public double getSKp() {
 		return this.sKp;
 	}
 
-	public void setSKp(float parm) {
+	public void setSKp(double parm) {
 		this.sKp = parm;
 	}
 
-	public float getSKi() {
+	public double getSKi() {
 		return this.sKi;
 	}
 
-	public void setSKi(float parm) {
+	public void setSKi(double parm) {
 		this.sKi = parm;
 	}
 
-	public float getSKd() {
+	public double getSKd() {
 		return this.skd;
 	}
 
-	public void setSKd(float parm) {
+	public void setSKd(double parm) {
 		this.skd = parm;
 	}
 

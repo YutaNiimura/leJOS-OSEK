@@ -6,7 +6,7 @@ public class LejosWheelMotor implements WheelMotor{
 
 	public void setVal(int parm) {
 		MotorPort.B.controlMotor(parm, 0);
-		MotorPort.C.controlMotor(parm, 0);
+		MotorPort.C.controlMotor((-1)*parm, 0);
 	}
 
 }

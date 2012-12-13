@@ -19,7 +19,7 @@ public class Main extends Thread{
 		SpeedControl speedControl = new SpeedControl(lejosWheelMotorEncoder,lejosWheelMotor,
 				pidSpeedControl,ControlCycle);
 
-		speedControl.setTargSpeed(30);
+		speedControl.setTargSpeed(80);
 
 		Thread thread = new Thread(speedControl);
 

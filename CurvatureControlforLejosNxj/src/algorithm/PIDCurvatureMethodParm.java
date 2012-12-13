@@ -3,31 +3,37 @@ import Common.CurvatureControlMethodParm;
 
 public class PIDCurvatureMethodParm extends CurvatureControlMethodParm{
 
-	public float cKp;
-	public float cKi;
-	public float cKd;
+	public double cKp;
+	public double cKi;
+	public double cKd;
 
-	public float getCKp(){
+	public PIDCurvatureMethodParm(){
+		this.cKp = 0.85;
+		this.cKi = 0;
+		this.cKd = 0;
+	}
+
+	public double getCKp(){
 		return this.cKp;
 	}
 
-	public void setCKp(float parm){
+	public void setCKp(double parm){
 		this.cKp = parm;
 	}
 
-	public float getCKi(){
+	public double getCKi(){
 		return this.cKi;
 	}
 
-	public void setCKi(float parm){
+	public void setCKi(double parm){
 		this.cKi = parm;
 	}
 
-	public float getCKd(){
+	public double getCKd(){
 		return this.cKd;
 	}
 
-	public void setCKd(float parm){
+	public void setCKd(double parm){
 		this.cKd = parm;
 	}
 }

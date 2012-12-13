@@ -6,16 +6,12 @@ import lejos.util.*;;
 
 public class SpeedControl implements Runnable {
 
-	private Stopwatch stopwatch;
+	private Stopwatch stopwatch = new Stopwatch();
 
 	private SpeedControlMethod speedControlMethod;
-
 	private Speed speed;
-
 	private SpeedControlMotor speedControlMotor;
-
 	private int cycleTime;
-
 	private boolean available;
 
 	public SpeedControl(SpeedEncoder speedEncoder, SpeedControlMotor speedControlMotor, SpeedControlMethod speedControlMethod, int cycleTime) {
